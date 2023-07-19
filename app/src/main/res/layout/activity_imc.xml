@@ -15,39 +15,25 @@
         tools:context=".ImcActivity">
 
         <TextView
+            style="@style/TextViewForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
             android:text="@string/imc_desc" />
 
         <EditText
+            style="@style/EditTextForm"
             android:id="@+id/edit_imc_weight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
             android:hint="@string/weight"
-            android:inputType="number"
-            android:maxLength="3"
-            android:padding="15dp" />
+             />
 
         <EditText
+            style="@style/EditTextForm"
             android:id="@+id/edit_imc_height"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="30dp"
-            android:hint="@string/height"
-            android:inputType="number"
-            android:maxLength="3"
-            android:padding="15dp" />
+            android:hint="@string/height" />
 
         <Button
+            style="@style/ButtonForm"
             android:id="@+id/btn_imc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@color/black"
             android:text="@string/calc" />
 
     </LinearLayout>
