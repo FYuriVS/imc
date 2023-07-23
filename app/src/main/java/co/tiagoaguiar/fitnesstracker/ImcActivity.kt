@@ -1,10 +1,14 @@
 package co.tiagoaguiar.fitnesstracker
 
+import android.content.Context
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
 import co.tiagoaguiar.fitnesstracker.databinding.ActivityImcBinding
 import co.tiagoaguiar.fitnesstracker.databinding.ActivityMainBinding
 
@@ -30,10 +34,24 @@ class ImcActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.fields_message, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            Toast.makeText(this, "Seu IMC é: $res", Toast.LENGTH_SHORT).show()
-
             val imcResponseId = imcResponse(res)
-            Toast.makeText(this, imcResponseId, Toast.LENGTH_SHORT).show()
+            val title = getString(R.string.imc_response, res)
+
+            AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(imcResponseId)
+                .setPositiveButton(android.R.string.ok, object : DialogInterface.OnClickListener {
+                    override fun onClick(dialog: DialogInterface?, which: Int) {
+                        weight.setText("")
+                        height.setText("")
+                    }
+                })
+                .create()
+                .show()
+
+            val service = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            service.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+
         }
 
     }
